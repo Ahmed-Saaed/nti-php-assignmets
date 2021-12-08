@@ -12,7 +12,7 @@ $errors = [];
     if(empty(trim($name))){
       $errors['name'] = 'required field ';
     }
-    if(empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)){
+    if(empty($email) || !strstr($email,'@') || !strstr($email ,'.com')){
       $errors['email'] = ' enter valid email ';
     }
     if(strlen($password) < 6){
@@ -21,13 +21,13 @@ $errors = [];
     if(strlen($address) !== 10) {
       $errors['address'] = ' your addres has to be exactly 10 characters ' ;
     }
-    if(empty($linkedin)){
-      $errors['linkedin'] = ' please enter your linkedin url';
+    if(empty($linkedin)|| !strstr($linkedin,"www.linkedin.com/in/")){
+      $errors['linkedin'] = ' please enter a valid linkedin url';
     }
     
     if (count($errors) > 0){
       foreach($errors as $error => $value){
-        echo $error. ' : '.$value;
+        echo $error. ' : '.$value.', ';
       }
     }
   }
@@ -86,15 +86,3 @@ $errors = [];
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
