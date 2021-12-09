@@ -12,6 +12,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $address = clean($_REQUEST['address']);
     $linkedin = $_REQUEST['linkedin'];
 
+    $desPath = null;
+
     
 
     if(empty($name) || !filter_var($name,FILTER_SANITIZE_STRING)){
@@ -115,7 +117,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
       <div class="form-group">
         <label for="linkedin">linkedin</label>
-        <input type="text" name= "linkedin"   class="form-control" id="linkedin" aria-describedby="" placeholder="enter your linkedin url" >
+        <input type="url" name= "linkedin"   class="form-control" id="linkedin" aria-describedby="" placeholder="enter your linkedin url" >
       </div>
 
       <div class="form-group">

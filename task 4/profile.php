@@ -15,21 +15,21 @@ session_start()
 
 </head>
 <body>
-  <div class="container">
-  <div class="card m-5 center" style="width: 18rem;">
-  <img src="<?php echo $_SESSION['user']['desPath'];?>" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title"><?php echo $_SESSION['user']['name'];?></h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item"><?php echo $_SESSION['user']['email'];?></li>
-      <li class="list-group-item"><?php echo $_SESSION['user']['address'];?></li>
-      <li class="list-group-item"><?php echo $_SESSION['user']['linkedin'];?></li>
-      <li class="list-group-item"><?php echo $_SESSION['user']['name'];?></li>
-      <li class="list-group-item"></li>
-    </ul>
-  </div>
+  <div class="container ">
+    <div class="card mx-auto" style="width: 18rem;">
+    <img src="<?php echo $_SESSION['user']['image'];?>" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><?php echo $_SESSION['user']['name'];?></h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><?php echo $_SESSION['user']['email'];?></li>
+        <li class="list-group-item"><?php echo $_SESSION['user']['address'];?></li>
+        <li class="list-group-item"><?php echo $_SESSION['user']['linkedin'];?></li>
+        <li class="list-group-item"><?php echo $_SESSION['user']['name'];?></li>
+        <li class="list-group-item"></li>
+      </ul>
+    </div>
   </div>
 </body>
 </html>
