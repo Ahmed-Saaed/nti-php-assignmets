@@ -12,23 +12,8 @@ $prodFile = fopen("products.txt", "w") or die("Unable to open file!");
 
 
 foreach($products as $product){
-  $text ='id: '.$product['products_id'].'<br>';
-  fwrite($prodFile,$text);
-  $text ='name : '.$product['products_name'].'<br>';
-  fwrite($prodFile,$text);
-  $text ='description : '.$product['products_description'].'<br>';
-  fwrite($prodFile,$text);
-  $text ='quantity : '.$product['products_quantity'].'<br>';
-  fwrite($prodFile,$text);
-  $text ='model : '.$product['products_model'].'<br>';
-  fwrite($prodFile,$text);
-  $text ='image : '.$product['products_image'].'<br>';
-  fwrite($prodFile,$text);
-  $text ='date_added : '.$product['products_date_added'].'<br>';
-  fwrite($prodFile,$text);
-  $text ='liked : '.$product['products_liked'].'<br>';
-  fwrite($prodFile,$text);
-  $text ='*********************************'.'<br>';
+  $text ='id: '.$product['products_id'].'||'."\n".'name : '.$product['products_name'].'||'."\n".'description : '.$product['products_description'].'||'."\n".'quantity : '.$product['products_quantity'].'||'."\n".'model : '.$product['products_model'].'||'."\n".'image : '.$product['products_image'].'||'."\n".'date_added : '.$product['products_date_added'].'||'."\n".'liked : '.$product['products_liked'].'||'.'*********************************'."\n";
+
   fwrite($prodFile,$text);
 }
 

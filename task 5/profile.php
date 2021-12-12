@@ -18,7 +18,7 @@
     <ul class="list-group">
       <?php
           while(!feof($file)){
-            echo '<li class="list-group-item">'.fgets($file).'</li>'.'<hr>';
+            echo '<li class="list-group-item">'.fgets($file).'</li>';
           
           }
 
