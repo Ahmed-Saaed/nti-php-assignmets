@@ -3,7 +3,7 @@
     require '../helpers.php';
     require '../dbConnection.php';
 
-        // get data related to the url
+        // get the data
 
     $id = $_GET['id'];
 
@@ -17,12 +17,15 @@
         header("Location: index.php");
     }
 
+     // validate 
+    
     $errors = [];
         
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
         $title = clean($_REQUEST['title']);
         $content = clean($_REQUEST['content']);
-    }
+    
 
 
     if(!validate($title , 1)){
@@ -33,7 +36,7 @@
     $errors['content'] = 'please enter the content';
     }elseif(!validate($content , 3 , 20)){
         $errors['content'] = 'your content must be at least 30 char';
-
+    }
 
     if(!empty($_FILES['image']['name'])){
         $tmpPath = $_FILES['image']['tmp_name'];
@@ -47,34 +50,40 @@
 
         $allowedEx = ['jpg' , 'png'];
 
-            if(in_array($extension,$allowedEx)){
-                $desPath = '../image/'.$fileName;
-
-                if(move_uploaded_file($tmpPath,$desPath)){
-                    echo 'file uploaded ';
-                }else{
-                    echo 'error occured while uploading file';
+                if(in_array($extension,$allowedEx)){
+                    $desPath = '../image/'.$fileName;
+                
+                    if(move_uploaded_file($tmpPath,$desPath)){
+                        echo 'file uploaded ';
+                    }else{
+                        echo 'error occured while uploading file';
+                    }
                 }
-            }
             }else{
             $errors['image'] = ' upload image file ';
             }
+        
+        
+        //handle the error or execute
+
         if (count($errors) > 0){
             foreach($errors as $error => $value){
                 echo '<div class="alert alert-danger" role="alert">'.$error.' : '.$value.'</div>';
             }
         }else{
-                $sql = "update users set title = '$title' , content = '$content', image = '$desPath' where id=$id";
+                $sql = "update users set title = '$title' , content = '$content', image = '$desPath' where id ='$id'";
                 $op = mysqli_query($conn,$sql);
-        if($op){
-            $message = '|| data updated';
-        }else{
-            $message = 'Error try again'.mysqli_error($conn);
+                if($op){
+                    $message = '|| data updated';
+                }else{
+                    $message = 'Error try again'.mysqli_error($conn);
+                }
         }
-    }
     $_SESSION['message'] = $message;
     header("Location: index.php");
-}
+    
+    
+    }
 
 ?>
 
@@ -95,15 +104,15 @@
     <div class="container">
         <h2>what do you want to edit</h2>
 
-        <form action="edit.php?id=<?php echo $data['title']; ?>" method= "POST"  enctype="multipart/form-data">
+        <form action="edit.php?id=<?php echo $data['id']; ?>" method = "POST"  enctype="multipart/form-data">
             <div class="form-group">
-                <label for="exampleInputName">title</label>
-                <input type="text" name= "title" class="form-control" id="exampleInputtitle" aria-describedby="" placeholder="Enter your title" value = "<?php echo $data['title']; ?>" >
+                <label for="title">title</label>
+                <input type="text" name= "title" class="form-control" id="title" aria-describedby="" placeholder="Enter your title" value = "<?php echo $data['title']; ?>" >
             </div>
 
             <div class="form-group">
                 <label for="content">content</label>
-                <input type="textarea" name= "content"  class="form-control" id="content" aria-describedby="" placeholder="enter your content" value = "<?php echo $data['content']; ?>" >
+                <input type="textarea" name = "content"  class="form-control" id="content" aria-describedby="" placeholder="enter your content" value = "<?php echo $data['content']; ?>" >
             </div>
 
             <div class="form-group">
