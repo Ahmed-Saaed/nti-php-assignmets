@@ -113,28 +113,28 @@
             <form action="<?php $_SERVER['PHP_SELF'];?>" method= "POST"  enctype="multipart/form-data">
             <div class="form-group my-2">
                 <label for="Name">task</label>
-                <input type="text" name= "task" class="form-control" id="task" aria-describedby="" placeholder="Enter your task" value = "<?php echo $data['task']; >
+                <input type="text" name= "task" class="form-control" id="task" aria-describedby="" placeholder="Enter your task" value = "<?php echo $data['task'];?> >
             </div>
 
             <div class="form-group my-2">
                 <label for="description">description</label>
-                <input type="text" name= "description" class="form-control" id="description" aria-describedby="" placeholder="Enter your description" value = "<?php echo $data['description'];>
+                <input type="text" name= "description" class="form-control" id="description" aria-describedby="" placeholder="Enter your description" value = "<?php echo $data['description'];?>>
             </div>
 
 
             <div class="form-group my-2">
                 <label for="startDate">start date</label>
-                <input type="date" name= "startDate" class="form-control" id="date" aria-describedby="" placeholder="start date" value = "<?php echo $data['start']; >
+                <input type="date" name= "startDate" class="form-control" id="date" aria-describedby="" placeholder="start date" value = "<?php echo $data['start'];?> >
             </div>
 
             <div class="form-group my-2">
                 <label for="endDate">end date</label>
-                <input type="date" name= "endDate" class="form-control" id="endDate" aria-describedby="" placeholder="end date"  value = "<?php echo $data['end'];>
+                <input type="date" name= "endDate" class="form-control" id="endDate" aria-describedby="" placeholder="end date"  value = "<?php echo $data['end'];?>>
             </div>
 
             <div class="form-group my-2">
                 <label for="image">upload your image</label>
-                <input type="file" name= "image" class="form-control" id="image" aria-describedby="" placeholder="upload an image" value = "<?php echo $data['image'];>
+                <input type="file" name= "image" class="form-control" id="image" aria-describedby="" placeholder="upload an image" value = "<?php echo $data['image'];?>>
             </div>
 
             <button type="submit" class="btn btn-primary my-3">update</button>
